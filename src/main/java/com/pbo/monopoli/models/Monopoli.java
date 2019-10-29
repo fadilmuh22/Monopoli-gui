@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.pbo.monopoli.utils.PetakConverter;
 
 public class Monopoli {
@@ -65,7 +66,7 @@ public class Monopoli {
     ObjectMapper mapper = new ObjectMapper();
     InputStream f;
     try {
-      f = this.getClass().getResourceAsStream("/com/pbo/monopoli/kartu_bonus.json");
+      f = this.getClass().getResourceAsStream("/com/pbo/monopoli/resources/kartu_bonus.json");
       if (true) {
         try {
           this.listKartuBonus = mapper.readValue(f, new TypeReference<List<KartuBonus>>() {
@@ -181,7 +182,7 @@ public class Monopoli {
             ya = sc.nextLine();
             if (ya.equals("y")) {
               String jenisAset;
-              int jumlahAset = 1;
+              int jumlahAset = 0;
 
               int[] hargaBeli = this.getPapan().get(posisiPemain).getHargaBeli();
 
@@ -244,10 +245,11 @@ public class Monopoli {
         if (!this.getPapan().get(posisiPemain).getPemilik().equals("game")) {
           if (!this.getPapan().get(posisiPemain).getPemilik().equals(this.getPemain().get(this.pemainAktif).getId())) {
             System.out.println(
-                "Ente ada di tanah orang dan harus bayar segini nih: " + this.getPapan().get(posisiPemain).getHarga());
+                "Ente ada di tanah orang dan harus bayar" 
+            );
             ya = sc.nextLine();
-            if (ya.equals("y")) {
-              this.bayar((this.getPapan().get(posisiPemain).getHarga()) * -1);
+            if ( !ya.equals("p") ) {
+              this.bayar( (this.getPapan().get(posisiPemain).getHarga()) * -1 );
             }
             System.out.println("Duit ente segini lagi sekarang gan " + this.pemain.get(this.pemainAktif).getUang());
             break;
