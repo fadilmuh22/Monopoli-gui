@@ -1,0 +1,12 @@
+com\pbo\monopoli\utils\PetakConverter.class
+com\pbo\monopoli\App.class
+com\pbo\monopoli\Coba.class
+com\pbo\monopoli\Main.class
+com\pbo\monopoli\models\Dadu.class
+com\pbo\monopoli\models\KartuAset.class
+com\pbo\monopoli\models\Petak.class
+com\pbo\monopoli\models\KartuBonus.class
+com\pbo\monopoli\models\Papan.class
+com\pbo\monopoli\models\Pemain.class
+com\pbo\monopoli\models\Monopoli.class
+com\pbo\monopoli\models\ActionsHelper.class

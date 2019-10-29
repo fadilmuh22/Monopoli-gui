@@ -1,0 +1,266 @@
+[
+  {
+    "id": 0,
+    "jenis": "chances",
+    "ket": "Maju sampai Fadil Railroad dan Dapat 10.000",
+    "aksi": "pindah",
+    "qty": 10000,
+    "posisi": 26
+  },
+  {
+    "id": 1,
+    "jenis": "chances",
+    "ket": "Terima uang sewa dari Bank",
+    "aksi": "bayar",
+    "qty": 150000,
+    "posisi": 39
+  },
+  {
+    "id": 2,
+    "jenis": "chances",
+    "ket": "Ongkos perbaikan rumah",
+    "aksi": "bayar",
+    "qty": -20000,
+    "posisi": 0
+  },
+  {
+    "id": 3,
+    "jenis": "chances",
+    "ket": "Maju sampai Netherland dapat 10.000",
+    "aksi": "pindah",
+    "qty": 10000,
+    "posisi": 12
+  },
+  {
+    "id": 4,
+    "jenis": "chances",
+    "ket": "Bayar ongkos perbaikan jalan",
+    "aksi": "bayar",
+    "qty": -20000,
+    "posisi": 0
+  },
+  {
+    "id": 5,
+    "jenis": "chances",
+    "ket": "Masuk penjara",
+    "aksi": "penjara",
+    "qty": 0,
+    "posisi": 11
+  },
+  {
+    "id": 6,
+    "jenis": "chances",
+    "ket": "Melanggar UU bayar 40000",
+    "aksi": "bayar",
+    "qty": -40000,
+    "posisi": 0
+  },
+  {
+    "id": 7,
+    "jenis": "chances",
+    "ket": "Hadiah dari Gubernur",
+    "aksi": "bayar",
+    "qty": 10000,
+    "posisi": 0
+  },
+  {
+    "id": 8,
+    "jenis": "chances",
+    "ket": "Kejahatan sosial",
+    "aksi": "bayar",
+    "qty": -20000,
+    "posisi": 0
+  },
+  {
+    "id": 9,
+    "jenis": "chances",
+    "ket": "Bank sedang baik kepada anda",
+    "aksi": "bayar",
+    "qty": 5000,
+    "posisi": 0
+  },
+  {
+    "id": 10,
+    "jenis": "chances",
+    "ket": "Mundur 3 petak",
+    "aksi": "pindah",
+    "qty": -3,
+    "posisi": 0
+  },
+  {
+    "id": 11,
+    "jenis": "chances",
+    "ket": "Nafkah keluarga anda",
+    "aksi": "bayar",
+    "qty": 15000,
+    "posisi": 0
+  },
+  {
+    "id": 12,
+    "jenis": "chances",
+    "ket": "Maju sampai start",
+    "aksi": "pindah",
+    "qty": 0,
+    "posisi": 0
+  },
+  {
+    "id": 13,
+    "jenis": "chances",
+    "ket": "Dapet gratisan liburan ke Korea Selatan dan dikasih uang jajan 5.000,00",
+    "aksi": "pindah",
+    "qty": 5000,
+    "posisi": 1
+  },
+  {
+    "id": 14,
+    "jenis": "chances",
+    "ket": "lorem ipsum",
+    "aksi": "bayar",
+    "qty": 0,
+    "posisi": 0
+  },
+  {
+    "id": 15,
+    "jenis": "chances",
+    "ket": "lorem ipsum",
+    "aksi": "bayar",
+    "qty": 0,
+    "posisi": 0
+  },
+  {
+    "id": 16,
+    "jenis": "chances",
+    "ket": "lorem ipsum",
+    "aksi": "bayar",
+    "qty": 0,
+    "posisi": 0
+  },
+  {
+    "id": 17,
+    "jenis": "bonus",
+    "ket": "Kembali mennuju Amerika dan terima uang 10.000,00",
+    "aksi": "pindah",
+    "qty": 10000,
+    "posisi": 1
+  },
+  {
+    "id": 18,
+    "jenis": "bonus",
+    "ket": "Terima kompensasi dari Bank 20.000,00",
+    "aksi": "bayar",
+    "qty": 20000,
+    "posisi": 0
+  },
+  {
+    "id": 19,
+    "jenis": "bonus",
+    "ket": "Hadiah Ulang Tahun dapat 1.000,00",
+    "aksi": "bayar",
+    "qty": 1000,
+    "posisi": 0
+  },
+  {
+    "id": 20,
+    "jenis": "bonus",
+    "ket": "Kena tilang bayar denda 5.000,00",
+    "aksi": "bayar",
+    "qty": -5000,
+    "posisi": 0
+  },
+  {
+    "id": 21,
+    "jenis": "bonus",
+    "ket": "Masuk Penjara tanpa basa-basi",
+    "aksi": "penjara",
+    "qty": 0,
+    "posisi": 0
+  },
+  {
+    "id": 22,
+    "jenis": "bonus",
+    "ket": "Kalah main poker bayar 1.000,00",
+    "aksi": "bayar",
+    "qty": -1000,
+    "posisi": 0
+  },
+  {
+    "id": 23,
+    "jenis": "bonus",
+    "ket": "Bank lagi baik bagi-bagi duid 5.000,00",
+    "aksi": "bayar",
+    "qty": 5000,
+    "posisi": 0
+  },
+  {
+    "id": 24,
+    "jenis": "bonus",
+    "ket": "Kena tabrak onta, bayar biaya pengobatan 10.000,00",
+    "aksi": "bayar",
+    "qty": -10000,
+    "posisi": 0
+  },
+  {
+    "id": 25,
+    "jenis": "bonus",
+    "ket": "Bayar parkir ke tukang parkir gaib 2.000,00",
+    "aksi": "bayar",
+    "qty": 2000,
+    "posisi": 0
+  },
+  {
+    "id": 26,
+    "jenis": "bonus",
+    "ket": "Dapat Warisan dari kakek orang lain 10.000,00",
+    "aksi": "bayar",
+    "qty": 10000,
+    "posisi": 0
+  },
+  {
+    "id": 27,
+    "jenis": "bonus",
+    "ket": "Maju sampai START",
+    "aksi": "pindah",
+    "qty": 0,
+    "posisi": 0
+  },
+  {
+    "id": 28,
+    "jenis": "bonus",
+    "ket": "Dapet uang sumbangan banjir 10.000,00",
+    "aksi": "bayar",
+    "qty": 10000,
+    "posisi": 0
+  },
+  {
+    "id": 29,
+    "jenis": "bonus",
+    "ket": "Menang Lotre dapet 2.000,00",
+    "aksi": "bayar",
+    "qty": 2000,
+    "posisi": 0
+  },
+  {
+    "id": 30,
+    "jenis": "bonus",
+    "ket": "Bank lagi baik sama kamu ngasih 2.500,00",
+    "aksi": "bayar",
+    "qty": 2500,
+    "posisi": 0
+  },
+  {
+    "id": 31,
+    "jenis": "bonus",
+    "ket": "Dapet uang hasil ngemis 5.000,00",
+    "aksi": "bayar",
+    "qty": 5000,
+    "posisi": 0
+  },
+  {
+    "id": 32,
+    "jenis": "bonus",
+    "ket": "Bayar Hutang Rokok bulan kemaren 16.000,00",
+    "aksi": "bayar",
+    "qty": -16000,
+    "posisi": 0
+  }
+]
