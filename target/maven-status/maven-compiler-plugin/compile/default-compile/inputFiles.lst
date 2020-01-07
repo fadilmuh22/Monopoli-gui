@@ -1,12 +1,13 @@
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\models\Pemain.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\Main.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\models\KartuAset.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\models\KartuBonus.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\Coba.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\App.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\models\ActionsHelper.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\models\Monopoli.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\models\Petak.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\models\Dadu.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\utils\PetakConverter.java
-D:\Fadil\Fadil's LIfe cycle\LEARN\PBO\Monopoli\Monopoli\src\main\java\com\pbo\monopoli\models\Papan.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/models/Petak.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/models/Monopoli.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/Coba.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/models/IniClass.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/models/ActionsHelper.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/Main.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/utils/PetakConverter.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/App.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/models/Pemain.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/models/IniBase.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/models/Dadu.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/models/KartuBonus.java
+/home/fadillads/Fadillifecycle/LEARN/PBO/Monopoli/Monopoli/src/main/java/com/pbo/monopoli/models/Papan.java

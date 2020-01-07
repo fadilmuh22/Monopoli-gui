@@ -1,18 +1,12 @@
 {
-    "configurations": [
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - App",
-            "request": "launch",
-            "mainClass": "com.pbo.monopoli.App",
-            "projectName": "Monopoli"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Main",
-            "request": "launch",
-            "mainClass": "com.pbo.monopoli.Main",
-            "projectName": "Monopoli"
-        }
-    ]
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "mainClass": "com.pbo.monopoli.Main",
+      "projectName": "Monopoli"
+    }
+  ]
 }
