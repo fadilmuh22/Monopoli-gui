@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+//"author": "ihsan_ganteng_and_family",
 
 public class Petak {
   private String id;
@@ -19,7 +20,7 @@ public class Petak {
   private HashMap<String, Integer> aset = new HashMap<String, Integer>();
 
   public Petak (
-    @JsonProperty("id")
+    @JsonProperty("id_petak")
     String id,
     @JsonProperty("jenis")
     String jenis,
@@ -47,15 +48,17 @@ public class Petak {
     this.setHargaBeli(hargaBeli);
     this.setActions(aksi);
     this.hargaSewaHotel = hargaSewaHotel;
+    this.aset.put("r", 0);
+    this.aset.put("h", 0);
     // this.setAset(aset);
   }
   
-  @JsonProperty("id")
+  @JsonProperty("id_petak")
   public String getId() {
     return id;
   }
 
-  @JsonProperty("id")
+  @JsonProperty("id_petak")
   public void setId(String id) {
     this.id = id;
   }

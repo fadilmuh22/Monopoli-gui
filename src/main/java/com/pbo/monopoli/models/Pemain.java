@@ -5,15 +5,25 @@ import java.util.List;
 
 public class Pemain {
   private String id;
-  private Double uang = 150000.00;
+  private String nama;
+  private Double uang = 200000.00;
   private Double hutang = 0.00;
   private int posisi = 0;
   private String status = "main";
   private boolean hasPassesStart = false;
   private HashMap<String, Integer> aset = new HashMap<String, Integer>();
 
-  public Pemain(String id) {
+  public Pemain(String id, String nama) {
     this.setId(id);
+    this.nama = nama;
+  }
+
+  public String getNama() {
+    return nama;
+  }
+
+  public void setNama(String nama) {
+    this.nama = nama;
   }
 
   public boolean isHasPassesStart() {
@@ -39,7 +49,7 @@ public class Pemain {
   public void setPosisi(int posisi) {
     if (this.posisi < 10) {
       this.posisi += posisi;
-      if (this.posisi >= 10 ) {
+      if (this.posisi >= 10) {
         System.out.println("Lewat dari kotak 10");
         this.posisi += 1;
       }
@@ -52,7 +62,7 @@ public class Pemain {
         }
       }
     }
-    
+
   }
 
   public void setPosisiAbsolute(int posisiAbsolute) {
@@ -88,6 +98,6 @@ public class Pemain {
   }
 
   public void setHutang(Double hutang) {
-    this.hutang = hutang;
+    this.hutang += hutang;
   }
 }
