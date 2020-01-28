@@ -13,14 +13,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pbo.monopoli.utils.PetakConverter;
 
 public class Monopoli {
+
+  private Scanner sc = new Scanner(System.in);
   private Dadu dadu = new Dadu();
   private Papan papan;
+  public int jumlahPemain;
   private List<Pemain> pemain = new ArrayList<Pemain>();
   private List<KartuBonus> listKartuBonus;
   private int pemainAktif = 0;
   private int jumlahMove = 0;
   private int jumlahMovePenjara = 0;
-  public int jumlahPemain;
 
   public boolean statusGame = true;
 
@@ -49,9 +51,9 @@ public class Monopoli {
           e.printStackTrace();
         }
       }
-    } catch (Exception e1) {
-      // TODO Auto-generated catch block
-      e1.printStackTrace();
+    } catch (Exception e) {
+      System.out.println(e);
+      e.printStackTrace();
     }
 
     // List<Petak> petak = new ArrayList<Petak>();
@@ -78,9 +80,9 @@ public class Monopoli {
           e.printStackTrace();
         }
       }
-    } catch (Exception e1) {
-      // TODO Auto-generated catch block
-      e1.printStackTrace();
+    } catch (Exception e) {
+      System.out.println(e);
+      e.printStackTrace();
     }
   }
 
@@ -93,7 +95,7 @@ public class Monopoli {
   }
 
   public void setPemain(int jumlah) {
-    Scanner sc = new Scanner(System.in);
+    
     for (int id = 0; id < jumlah; id++) {
       System.out.println("Nama pemain " + id + " ? ");
       String nama = sc.next();
@@ -111,7 +113,7 @@ public class Monopoli {
   // }
 
   public void options() {
-    Scanner sc = new Scanner(System.in);
+    
     int posisiPemain = getPemain().getPosisi();
 
     System.out.println("==================================================");
@@ -140,60 +142,35 @@ public class Monopoli {
         try {
           System.in.read();
         } catch (IOException e) {
-          // TODO Auto-generated catch block
+          System.out.println(e);
           e.printStackTrace();
         }
         options();
         break;
       
       case 2:
-        int ja = 0;
-        for (Petak petak : getPapan()) {
-          if (getPemain().getId().equals(petak.getPemilik())) {
-            ja++;
-          }
-          }
-          
-          if (ja == 0) {
-            System.out.println("Anda masih belum punya asset");
-            System.out.println("-------------------------------------------");
-          } else if (ja >= 0) {
-            System.out.println( "List asset ente nih gan: ");
-            int i = 1;
-            for (Petak petak : getPapan()) {
-              if (getPemain().getId().equals(petak.getPemilik())) {
-                System.out.println(i + " " + petak.getNamaPetak() + " dan harganya " + petak.getHarga());
-              }
-              i++;
-            }
-            System.out.println("-------------------------------------------");
-          }
-          enterToCon();
-          options();
-          break;
+        checkJumlahAssets();
+        enterToCon();
+        options();
+        break;
         
-        case 3:
-          pemain.remove(pemainAktif);
-          enterToCon();
-          options();
-          move();
-          break;
-          
-        default:
-          move();
-          break;
-      }
-      System.out.println("==================================================");
+      case 3:
+        pemain.remove(pemainAktif);
+        enterToCon();
+        options();
+        break;
+        
+      default:
+        move();
+        break;
+    }
+    System.out.println("==================================================");
 
   }
 
   public void move() {
     if (jumlahMove == 3) {
       System.out.println("Pemain "+getPemain().getNama()+" masuk penjara");
-      this.penjara();
-    }
-
-    if (getPemain().getStatus().equals("penjara")) {
       this.penjara();
     } else {
       System.out.println();
@@ -215,7 +192,7 @@ public class Monopoli {
           System.out.print("Maju lagi karena double....");
           System.in.read();
         } catch (Exception e) {
-          //TODO: handle exception
+          System.out.println(e);
         }
         jumlahMove += 1;
         this.move();
@@ -267,7 +244,7 @@ public class Monopoli {
 
   public void getActions(int posisiPemain) {
     this.checkStart();
-    Scanner sc = new Scanner(System.in);
+    
     System.out.println("Ini aksinya yang di dapat: " + this.getPapan().get(posisiPemain).getActions() );
     String ya;
     switch (this.getPapan().get(posisiPemain).getActions()) {
@@ -430,7 +407,7 @@ public class Monopoli {
   }
 
   public void penjara() {
-    Scanner sc = new Scanner(System.in);
+    
     String ya;
 
     getPemain().setPosisiAbsolute(11);
@@ -470,7 +447,7 @@ public class Monopoli {
   }
 
   public void bayar(Double jumlah) {
-    Scanner sc = new Scanner(System.in);
+    
     if (jumlah < 0) {
 
       if ( getPemain().getUang() < Math.abs(jumlah) ) {
@@ -526,7 +503,7 @@ public class Monopoli {
   }
 
   public void bayar(Double jumlah, String id) {
-    Scanner sc = new Scanner(System.in);
+    
     if (jumlah < 0) {
 
       if ( getPemain(id).getUang() < Math.abs(jumlah) ) {
@@ -607,13 +584,37 @@ public class Monopoli {
     }
   }
 
+  public void checkJumlahAssets() {
+    int ja = 0;
+    for (Petak petak : getPapan()) {
+      if (getPemain().getId().equals(petak.getPemilik())) {
+        ja++;
+      }
+    }
+      
+    if (ja == 0) {
+      System.out.println("Anda masih belum punya asset");
+      System.out.println("-------------------------------------------");
+    } else if (ja >= 0) {
+      System.out.println( "List asset ente nih gan: ");
+      int i = 1;
+      for (Petak petak : getPapan()) {
+        if (getPemain().getId().equals(petak.getPemilik())) {
+          System.out.println(i + " " + petak.getNamaPetak() + " dan harganya " + petak.getHarga());
+        }
+        i++;
+      }
+      System.out.println("-------------------------------------------");
+    }
+}
+
   public void enterToCon() {
     System.out.print("Enter untuk melanjutkan...");
           
     try {
       System.in.read();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      System.out.println(e);
       e.printStackTrace();
     }
 }
