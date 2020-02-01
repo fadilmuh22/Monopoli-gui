@@ -11,10 +11,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.pbo.monopoli.utils.PetakConverter;
+import com.pbo.monopoli.utils.ActionsHelper;
 
 public class Monopoli {
 
-  private Scanner sc = new Scanner(System.in);
   private Dadu dadu = new Dadu();
   private Papan papan;
   public int jumlahPemain;
@@ -23,6 +23,7 @@ public class Monopoli {
   private int pemainAktif = 0;
   private int jumlahMove = 0;
   private int jumlahMovePenjara = 0;
+  private String[] choiceyt = {"y", "t"};
 
   public boolean statusGame = true;
 
@@ -98,12 +99,16 @@ public class Monopoli {
     
     for (int id = 0; id < jumlah; id++) {
       System.out.println("Nama pemain " + id + " ? ");
-      String nama = sc.next();
+      String nama = ActionsHelper.getInputString("Nama: ");
       this.pemain.add(new Pemain("p" + id, nama));
     }
 
     // acakPemainPertama();
 
+  }
+
+  public List<Pemain> getPemains() {
+    return pemain;
   }
 
   // ! DEPRECATED
@@ -113,6 +118,10 @@ public class Monopoli {
   // }
 
   public void options() {
+
+    if (pemain.size() == 1) {
+      ActionsHelper.gameWin(getPemain().getNama());
+    }
     
     int posisiPemain = getPemain().getPosisi();
 
@@ -130,9 +139,8 @@ public class Monopoli {
       
     System.out.println("\t==================================");
     System.out.println();
-    System.out.print("Silahkan masukan pilihan anda: ");
     
-    int pilihanOpsi = sc.nextInt();
+    int pilihanOpsi = ActionsHelper.getInputNumber(1, 4, "Silahkan masukan pilihan anda: ");
     System.out.println("-------------------------------------------");
     switch (pilihanOpsi) {
       case 1:
@@ -156,6 +164,7 @@ public class Monopoli {
         
       case 3:
         pemain.remove(pemainAktif);
+        System.out.println("ini jumlah pemain sekarang " + pemain.size());
         enterToCon();
         options();
         break;
@@ -216,6 +225,9 @@ public class Monopoli {
   }
 
   public Pemain getPemain() {
+    if (pemainAktif == pemain.size()) {
+      return this.pemain.get(0);
+    }
     return this.pemain.get(this.pemainAktif);
   }
 
@@ -239,6 +251,7 @@ public class Monopoli {
     }
 
     this.jumlahMove = 0;
+    ActionsHelper.clearScreen();
     options();
   }
 
@@ -253,7 +266,7 @@ public class Monopoli {
           System.out.println("Duit ente segini gan " + getPemain().getUang());
           if (this.getPapan().get(posisiPemain).getPemilik().equals(getPemain().getId())) {
             System.out.println("========== Apakah Ingin Tambah Asset? ============");
-            ya = sc.nextLine();
+            ya = ActionsHelper.getChoiceString(choiceyt, "Pilihan anda (y / t) : ");
             if (ya.equals("y")) {
               String jenisAset;
               int jumlahAset = 0;
@@ -261,14 +274,13 @@ public class Monopoli {
               int[] hargaBeli = this.getPapan().get(posisiPemain).getHargaBeli();
 
               System.out.println("( r (rumah) / h (hotel) )");
-              System.out.print("Pilihan anda: ");
-              jenisAset = sc.next();
+              String[] choicerh = {"r", "h"};
+              jenisAset = ActionsHelper.getChoiceString(choicerh, "Pilihan anda (r / h) : ");
               System.out.println();
 
               if ( jenisAset.equals("r") ) {
                 System.out.println("Harga beli rumah adalah " + hargaBeli[0]);
-                System.out.println("Berapa jumlahnya? ");
-                jumlahAset = sc.nextInt();
+                jumlahAset = ActionsHelper.getInputNumber(1, 4, "Berapa jumlahnya? ");
                 this.bayar((double) (hargaBeli[0] * jumlahAset) * -1);
                 this.getPapan().get( posisiPemain ).setHarga((double) hargaBeli[0] * jumlahAset);
                 System.out.println("Harga aset " + this.getPapan().get( posisiPemain ).getNamaPetak() + " adalah " + this.getPapan().get( posisiPemain ).getHarga());
@@ -276,11 +288,11 @@ public class Monopoli {
 
               } else if( jenisAset.equals("h") ) {
                 if ( this.getPapan().get( posisiPemain ).getAset().get("r") >= 4 ) {
-                  System.out.print("Harga beli hotel adalah " + hargaBeli[1] + " [y/t]: ");
+                  System.out.print("Harga beli hotel adalah " + hargaBeli[1]);
                   jumlahAset = 1;
-                  String pilih = sc.next();
+                  String pilih = ActionsHelper.getChoiceString(choiceyt, "Pilihan anda (y /t) : ");
                   System.out.println(); 
-                  if (!(pilih.equals("p")) && pilih.equals("y")) {
+                  if ( pilih.equals("y") ) {
                     this.bayar((double) (hargaBeli[1] * jumlahAset) *-1);
                     System.out.println("Selamat anda telah membeli hotel");
                     this.getPapan().get( posisiPemain ).setHarga((double) hargaBeli[1] * jumlahAset);
@@ -304,10 +316,10 @@ public class Monopoli {
             System.out.println(
               "Ente ada di tanah " + getPemain( getPapan().get(posisiPemain).getPemilik() ).getNama() + " dan harus bayar"
             );
-            System.out.print("Harga sewa petak ini adalah " + hargaSewaTotal + " [y]: ");
-            ya = sc.next();
+            System.out.println("Harga sewa petak ini adalah " + hargaSewaTotal);
+            ya = ActionsHelper.getInputString("Bayar [y] : ");
             System.out.println();
-            if (!ya.equals("p")) {
+            if ( !ya.equals("p") ) {
               this.bayar( (double) hargaSewaTotal, getPapan().get(posisiPemain).getPemilik() );
               this.bayar( (double) hargaSewaTotal * -1 );
               System.out.println( "Pemilik tanah: " + getPemain( getPapan().get(posisiPemain).getPemilik() ).getNama()+ " dapet duid segini: " + hargaSewaTotal );
@@ -317,10 +329,10 @@ public class Monopoli {
           }
 
         } else {
-          System.out.print("Beli gak gan? Harganya segini nih: " + this.getPapan().get(posisiPemain).getHarga()+ " [y/t]: ");
-          ya = sc.next();
+          System.out.println("Beli gak gan? Harganya segini nih: " + this.getPapan().get(posisiPemain).getHarga());
+          ya = ActionsHelper.getChoiceString(choiceyt, "Pilihan anda (y / t) : ");
           System.out.println();
-          if (ya.equals("y") && !(ya.equals("p"))) {
+          if ( ya.equals("y") ) {
             this.bayar((this.getPapan().get(posisiPemain).getHarga()) * -1);
             this.getPapan().get(posisiPemain).setPemilik(getPemain().getId());
             System.out.println("Tanah " + this.getPapan().get(posisiPemain).getNamaPetak() + " milik " + getPemain( this.getPapan().get(posisiPemain).getPemilik() ).getNama() );
@@ -333,11 +345,11 @@ public class Monopoli {
         if (!this.getPapan().get(posisiPemain).getPemilik().equals("game")) {
           if (!this.getPapan().get(posisiPemain).getPemilik().equals(getPemain().getId())) {
             System.out.print(
-                "Ente ada di tanah " + getPemain( getPapan().get(posisiPemain).getPemilik() ).getNama() + " dan harus bayar " + this.getPapan().get(posisiPemain).getHarga() + " [y]: "
+                "Ente ada di tanah " + getPemain( getPapan().get(posisiPemain).getPemilik() ).getNama() + " dan harus bayar " + this.getPapan().get(posisiPemain).getHarga()
             );
-            ya = sc.next();
+            ya = ActionsHelper.getInputString("Bayar [y] : ");
             System.out.println();
-            if ( !ya.equals("p") && ya.equals("y") ) {
+            if ( !ya.equals("p") ) {
               this.bayar( (this.getPapan().get(posisiPemain).getHarga()) * -1 );
               System.out.println( "Pemilik tanah: " + getPemain( getPapan().get(posisiPemain).getPemilik() ).getNama()+ " dapet duid segini: " + this.getPapan().get(posisiPemain).getHarga() );
               this.bayar( this.getPapan().get(posisiPemain).getHarga(), getPemain().getId() );
@@ -349,10 +361,10 @@ public class Monopoli {
         }
         System.out.println("Duit ente segini gan " + getPemain().getUang());
 
-        System.out.print("Beli gak gan? Harganya segini nih: " + this.getPapan().get(posisiPemain).getHarga() + "[y/t]");
-        ya = sc.next();
+        System.out.println("Beli gak gan? Harganya segini nih: " + this.getPapan().get(posisiPemain).getHarga());
+        ya = ActionsHelper.getChoiceString(choiceyt, "Pilihan anda (y / t) : ");
         System.out.println();
-        if (ya.equals("y")) {
+        if ( ya.equals("y") ) {
           this.bayar((this.getPapan().get(posisiPemain).getHarga()) * -1);
           this.getPapan().get(posisiPemain).setPemilik(getPemain().getId());
         }
@@ -380,9 +392,10 @@ public class Monopoli {
         System.out.println("Duit ente segini lagi sekarang gan " + getPemain().getUang());
         break;
       case "fly":
-        System.out.println("========== Anda ada di kotak parkir bebas, dan bebas untuk kemana aja :) ==========");
-        int kotakPilihanPemain = sc.nextInt();
+        System.out.println("== Anda ada di kotak parkir bebas, dan bebas untuk kemana aja :) ==");
+        int kotakPilihanPemain = ActionsHelper.getInputNumber(0, 40, "Pilihan anda : ");
         this.pemain.get( this.pemainAktif ).setPosisiAbsolute( kotakPilihanPemain );
+        System.out.println("Berada di kotak " + this.getPapan().get( kotakPilihanPemain ).getNamaPetak());
         this.getActions( getPemain().getPosisi() );
         this.setPemainAktif();
         break;
@@ -419,9 +432,9 @@ public class Monopoli {
       setPemainAktif();
       move();
     } else if (this.jumlahMovePenjara == 3) {
-      System.out.println("Ente 3 kali kesempatan ga lolos keluar penjara dengan bayar 5000 (y/t)");
-      ya = sc.nextLine();
-      if (ya.equals("y")) {
+      System.out.println("Ente 3 kali kesempatan ga lolos keluar penjara dengan bayar 5000");
+      ya = ActionsHelper.getChoiceString(choiceyt, "Pilihan anda (y / t) : ");
+      if ( !ya.equals("p") ) {
         getPemain().setUang(-5000.00);
       }
       setPemainAktif();
@@ -454,8 +467,7 @@ public class Monopoli {
 
         System.out.println(getPemain().getNama() + " Anda tidak memiliki uang yang cukup!");
         System.out.println("1. Anda ingin menghutang?\n2. Ingin bangkrut saja?");
-        System.out.print("Pilihan anda: ");
-        int pilihan = sc.nextInt();
+        int pilihan = ActionsHelper.getInputNumber(1, 2, "Pilihan anda : ");
         System.out.println();
 
         if (pilihan == 1) {
@@ -510,8 +522,7 @@ public class Monopoli {
 
         System.out.println(getPemain(id).getNama() + " Anda tidak memiliki uang yang cukup!");
         System.out.println("1. Anda ingin menghutang?\n 2. Ingin bangkrut saja?");
-        System.out.print("Pilihan anda: ");
-        int pilihan = sc.nextInt();
+        int pilihan = ActionsHelper.getInputNumber(1, 2, "Pilihan anda : ");
         System.out.println();
 
         if (pilihan == 1) {
