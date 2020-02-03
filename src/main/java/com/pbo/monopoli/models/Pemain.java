@@ -1,5 +1,6 @@
 package com.pbo.monopoli.models;
 
+import java.awt.Color;
 import java.util.HashMap;
 
 public class Pemain {
@@ -11,10 +12,16 @@ public class Pemain {
   private String status = "main";
   private boolean hasPassesStart = false;
   private HashMap<String, Integer> aset = new HashMap<String, Integer>();
+  public Color color; 
 
   public Pemain(String id, String nama) {
     this.setId(id);
     this.nama = nama;
+    this.color = Color.BLUE;
+  }
+  
+  public Color getColor() {
+	  return color;
   }
 
   public String getNama() {

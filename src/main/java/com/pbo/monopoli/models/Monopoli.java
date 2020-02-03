@@ -27,16 +27,17 @@ public class Monopoli {
 
   public boolean statusGame = true;
 
-  public void setup(int pemain) {
+  public void setup() {
     this.setPapan();
     this.setKartuBonus();
-    this.setPemain(pemain);
-
-    this.jumlahPemain = pemain;
   }
 
   public List<Petak> getPapan() {
-    return this.papan.getListPetak();
+    return papan.getListPetak();
+  }
+  
+  public Petak getPetak(int index) {
+	    return papan.getListPetak().get(index);
   }
 
   public void setPapan() {
